@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Link para o CSS armazenado em static/core/style.css -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body class="auth-body"> <!-- Aplica o estilo de fundo e centralização da tela de autenticação -->
+
+    <div class="auth-container"> <!-- Caixa central com fundo roxo escuro -->
+        <h2>Login</h2>
+
+        {% if error %}
+            <!-- Exibe uma mensagem de erro se houver erro no login -->
+            <p class="error-msg">{{ error }}</p>
+        {% endif %}
+
+        <form method="post"> <!-- Formulário de autenticação -->
+            {% csrf_token %} <!-- Proteção contra CSRF (obrigatório no Django) -->
+
+            <!-- Campo de usuário -->
+            <div class="form-group">
+                {{ form.username.label_tag }}   <!-- Rótulo: "Usuário" -->
+                {{ form.username }}             <!-- Campo de input -->
+                {{ form.username.errors }}      <!-- Exibe erros relacionados ao campo -->
+            </div>
+
+            <!-- Campo de senha -->
+            <div class="form-group">
+                {{ form.password.label_tag }}   <!-- Rótulo: "Senha" -->
+                {{ form.password }}             <!-- Campo de input -->
+                {{ form.password.errors }}      <!-- Exibe erros relacionados ao campo -->
+            </div>
+
+            <!-- Botão de login -->
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+
+        <!-- Link para a tela de cadastro -->
+        <p>Não tem conta? <a href="{% url 'cadastro' %}">Cadastrar Conta</a></p>
+    </div>
+</body>
+</html>

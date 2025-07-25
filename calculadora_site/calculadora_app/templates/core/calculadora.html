@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Avançada</title>
+
+    <!-- Carrega o arquivo de estilos da pasta static/core -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <div class="container"> <!-- Container principal centralizado -->
+
+        <!-- 🔝 Topo com botão de logout -->
+        <div class="topo">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %} <!-- Proteção contra CSRF -->
+                <button type="submit" class="btn vermelho">Sair</button> <!-- Botão de logout -->
+            </form>
+        </div>
+
+        <!-- Título e descrição -->
+        <h1>Calculadora Avançada</h1>
+        <p>Calculadora com histórico de operações</p>
+
+        <!-- Área principal com calculadora e histórico lado a lado -->
+        <div class="painel-principal">
+
+            <!-- ➗ Bloco da calculadora -->
+            <div class="calculadora">
+                <!-- Tela da calculadora onde a expressão aparece -->
+                <div class="display" id="display">0</div>
+
+                <!-- Teclado da calculadora com os botões -->
+                <div class="teclado">
+                    <!-- Primeira linha: limpar, trocar sinal, porcentagem, divisão -->
+                    <button class="btn vermelho" onclick="clearDisplay()">C</button>
+                    <button class="btn" onclick="toggleSign()">±</button>
+                    <button class="btn" onclick="addToDisplay('%')">%</button>
+                    <button class="btn roxo" onclick="addToDisplay('/')">÷</button>
+
+                    <!-- Segunda linha: 7 8 9 multiplicação -->
+                    <button class="btn" onclick="addToDisplay('7')">7</button>
+                    <button class="btn" onclick="addToDisplay('8')">8</button>
+                    <button class="btn" onclick="addToDisplay('9')">9</button>
+                    <button class="btn roxo" onclick="addToDisplay('*')">×</button>
+
+                    <!-- Terceira linha: 4 5 6 subtração -->
+                    <button class="btn" onclick="addToDisplay('4')">4</button>
+                    <button class="btn" onclick="addToDisplay('5')">5</button>
+                    <button class="btn" onclick="addToDisplay('6')">6</button>
+                    <button class="btn roxo" onclick="addToDisplay('-')">−</button>
+
+                    <!-- Quarta linha: 1 2 3 adição -->
+                    <button class="btn" onclick="addToDisplay('1')">1</button>
+                    <button class="btn" onclick="addToDisplay('2')">2</button>
+                    <button class="btn" onclick="addToDisplay('3')">3</button>
+                    <button class="btn roxo" onclick="addToDisplay('+')">+</button>
+
+                    <!-- Última linha: 0 ponto e igual (igual ocupa duas colunas) -->
+                    <button class="btn" onclick="addToDisplay('0')">0</button>
+                    <button class="btn" onclick="addToDisplay('.')">.</button>
+                    <button class="btn igual" onclick="calcular()">=</button>
+                </div>
+            </div>
+
+            <!-- 🕒 Bloco do histórico -->
+            <div class="historico">
+                <!-- Cabeçalho com título e botão de limpar -->
+                <div class="cabecalho-historico">
+                    <h2>🕒 Histórico</h2>
+                    <form method="post" action="{% url 'limpar_historico' %}">
+                        {% csrf_token %}
+                        <button type="submit" title="Limpar histórico" class="btn vermelho" style="border: none; background: none;">
+                            🗑️
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Loop das operações salvas no banco -->
+                {% for item in historico %}
+                    <div class="cartao-historico">
+                        <div>{{ item.parametros }}</div> <!-- Exibe a expressão -->
+                        <div><strong>= {{ item.resultado }}</strong></div> <!-- Exibe o resultado -->
+                        <div class="hora">{{ item.dt_inclusao|time:"H:i" }}</div> <!-- Hora formatada -->
+                    </div>
+                {% empty %}
+                    <!-- Caso não haja histórico -->
+                    <p>Nenhum histórico ainda.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Inclui o JavaScript para funcionar os botões -->
+    <script src="{% static 'core/script.js' %}"></script>
+</body>
+</html>

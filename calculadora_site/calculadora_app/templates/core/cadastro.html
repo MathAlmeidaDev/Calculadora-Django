@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+
+    <!-- Importa o arquivo de estilos CSS da pasta static/core -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<!-- Aplica o estilo visual de fundo roxo escuro com centralização -->
+<body class="auth-body">
+
+    <!-- Caixa central de cadastro -->
+    <div class="auth-container">
+        <h2>Cadastro de Usuário</h2>
+
+        <!-- Formulário de cadastro -->
+        <form method="post">
+            {% csrf_token %} <!-- Token de segurança CSRF obrigatório no Django -->
+
+            <!-- Campo de nome de usuário -->
+            <div class="form-group">
+                {{ form.username.label_tag }}     <!-- Label: "Usuário" -->
+                {{ form.username }}               <!-- Campo de input -->
+                {{ form.username.errors }}        <!-- Erros relacionados ao campo (ex: já existe) -->
+            </div>
+
+            <!-- Campo de e-mail -->
+            <div class="form-group">
+                {{ form.email.label_tag }}        <!-- Label: "Email" -->
+                {{ form.email }}                  <!-- Campo de input -->
+                {{ form.email.errors }}           <!-- Erros de validação (opcional, se houver) -->
+            </div>
+
+            <!-- Campo de senha -->
+            <div class="form-group">
+                {{ form.password1.label_tag }}    <!-- Label: "Senha" -->
+                {{ form.password1 }}              <!-- Campo de input -->
+                {{ form.password1.help_text }}    <!-- Ajuda com regras de senha (Django) -->
+                {{ form.password1.errors }}       <!-- Erros de senha inválida -->
+            </div>
+
+            <!-- Campo de confirmação de senha -->
+            <div class="form-group">
+                {{ form.password2.label_tag }}    <!-- Label: "Confirmar Senha" -->
+                {{ form.password2 }}              <!-- Campo de input -->
+                {{ form.password2.errors }}       <!-- Erros de senha não coincidente -->
+            </div>
+
+            <!-- Botão de cadastro -->
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+
+        <!-- Link para voltar ao login -->
+        <p>Já tem conta? <a href="{% url 'login' %}">Faça login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+# Ambiente virtual (Windows ou Unix)
+venv/
+ENV/
+env/
+.venv/
+
+# Arquivos Python compilados
+*.pyc
+*.pyo
+__pycache__/
+
+# Arquivos de banco de dados temporários (SQLite)
+*.sqlite3
+
+# Configurações locais/dotenv (se usar)
+*.env
+.env.*
+
+# Arquivos de log
+*.log
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de cache de editores
+.vscode/
+.idea/
+*.swp
+
+# Arquivos de migração com histórico (opcional, se recriados com frequência)
+# calculadora_app/migrations/__pycache__/
+# calculadora_app/migrations/*.py
+
+# Arquivos de mídia ou uploads temporários
+media/
+uploads/
+
+# Arquivos gerados automaticamente
+staticfiles/

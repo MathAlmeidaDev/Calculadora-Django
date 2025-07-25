@@ -1,0 +1,269 @@
+/* ===================== */
+/* 🧱 Layout principal   */
+/* ===================== */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e0146, #44026e); /* fundo roxo em degradê */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px; /* limite da largura */
+}
+
+/* ========================= */
+/* 🔝 Topo com botão de sair */
+/* ========================= */
+
+.topo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* ========================================= */
+/* 📐 Painel principal: calculadora + histórico */
+/* ========================================= */
+
+.painel-principal {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; /* quebra em telas pequenas */
+}
+
+/* ===================== */
+/* ➗ Estilo da calculadora */
+/* ===================== */
+
+.calculadora {
+    display: inline-block;
+    background: #2c1e4a;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px #000;
+    margin-bottom: 2rem;
+}
+
+.display {
+    background: #0d0e1b;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    text-align: right; /* números à direita */
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 80px); /* 4 colunas de botões */
+    gap: 0.5rem;
+}
+
+/* Botões padrão */
+.btn {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+/* Botão roxo para operações */
+.btn.roxo {
+    background: #a341ff;
+}
+
+/* Botão vermelho (limpar) */
+.btn.vermelho {
+    background: #e74c3c;
+}
+
+/* Botão azul de "=" com largura dupla */
+.btn.igual {
+    background: #0050ff;
+    grid-column: span 2;
+}
+
+/* ======================== */
+/* 📜 Estilo do histórico lateral */
+/* ======================== */
+
+.historico {
+    background: rgba(255, 255, 255, 0.05); /* transparente leve */
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 300px;
+    width: 100%;
+    margin: 0;
+}
+
+/* Lista de histórico sem marcadores */
+.historico ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Itens do histórico */
+.historico li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Cartão individual do histórico */
+.cartao-historico {
+    background: #1e1133;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Cabeçalho do histórico com botão de limpar */
+.cabecalho-historico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* ======================== */
+/* 📱 Responsividade        */
+/* ======================== */
+
+@media (max-width: 768px) {
+    .painel-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teclado {
+        grid-template-columns: repeat(4, 60px); /* reduz largura dos botões */
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}
+
+/* ========================= */
+/* 🔐 Estilo das telas de login/cadastro */
+/* ========================= */
+
+.auth-body {
+    background: linear-gradient(135deg, #1e0146, #44026e);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.auth-container {
+    background-color: #2c1e4a;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.auth-container h2 {
+    margin-bottom: 1rem;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Campos de formulário */
+.auth-container input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Links de navegação */
+.auth-container a {
+    color: #a341ff;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo dos botões (compartilhado com calculadora) */
+.btn {
+    background-color: #a341ff;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #842ee0;
+}
+
+/* Mensagem de erro em login/cadastro */
+.error-msg {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Grupo de campos no formulário */
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+    color: #eee;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.form-group .helptext {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-top: 0.25rem;
+}
+
+/* Lista de erros de campo */
+.errorlist {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
