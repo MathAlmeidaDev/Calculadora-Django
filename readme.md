@@ -7,7 +7,7 @@ Este é o projeto desenvolvido para um desafio técnico. A aplicação é uma **
 ## 🚀 Funcionalidades
 
 - ✅ Tela de login e cadastro com layout personalizado
-- ✅ Calculadora com operações básicas: **+, -, ×, ÷**
+- ✅ A calculadora realiza operações básicas como adição (+), subtração (−), multiplicação (×) e divisão (÷). Além disso, o símbolo % é interpretado como módulo, ou seja, o resto da divisão inteira entre dois números. Por exemplo: 100 % 98 = 2 → resto da divisão de 100 por 98.
 - ✅ Histórico de operações por usuário
 - ✅ Possibilidade de limpar o histórico
 - ✅ Interface moderna com layout responsivo
