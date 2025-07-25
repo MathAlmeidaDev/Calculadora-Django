@@ -18,13 +18,13 @@ Este é o projeto desenvolvido para um desafio técnico. A aplicação é uma **
 ## 📸 Interface
 
 ### 🔐 Tela de Login
-![Login](imagens/login.jpeg)
+![Login](imagens/Login.jpeg)
 
 ### 🧾 Tela de Cadastro
-![Cadastro](imagens/cadastro.jpeg)
+![Cadastro](imagens/Cadastro.jpeg)
 
 ### ➗ Calculadora com Histórico
-![Calculadora](imagens/calculadora.jpeg)
+![Calculadora](imagens/Calculadora.jpeg)
 
 ---
 
